@@ -4,12 +4,7 @@
       
       <!-- Brand / Logo -->
       <NuxtLink to="/" class="brand">
-        <span class="brand__icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 12h4l3-9 5 18 3-9h5" />
-          </svg>
-        </span>
-        <span class="brand__name">HydroGlow</span>
+        <img src="~/assets/images/logo_oficial.png" alt="HydroGlow Logo" class="brand__logo-img" />
       </NuxtLink>
 
       <!-- Desktop Nav -->
@@ -113,13 +108,18 @@ onUnmounted(() => {
   transition: color var(--transition);
 }
 
-.brand__icon {
-  color: var(--color-accent);
+.brand__logo-img {
+  max-width: 140px; /* Reduzido para melhor proporção */
+  max-height: 50px; /* Garante que a altura não estique o header */
+  object-fit: contain; /* Evita qualquer distorção */
+  display: block;
+  transition: all var(--transition);
 }
 
-.brand__name {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+/* Reduz o tamanho da imagem da logo quando ocorre o scroll */
+.app-header--scrolled .brand__logo-img {
+  max-width: 120px;
+  max-height: 40px;
 }
 
 .nav-desktop {

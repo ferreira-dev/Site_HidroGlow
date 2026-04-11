@@ -3,12 +3,7 @@
     <div class="container app-footer__container">
       <div class="footer-brand">
         <div class="brand">
-          <span class="brand__icon">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 12h4l3-9 5 18 3-9h5" />
-            </svg>
-          </span>
-          <span class="brand__name">HydroGlow</span>
+          <img src="~/assets/images/logo_oficial.png" alt="HydroGlow Logo" class="brand__logo-img" />
         </div>
         <p class="brand__desc">
           Excelência em Segurança Aquática. Protegendo vidas em piscinas e complexos de lazer por todo o estado do Rio de Janeiro.
@@ -76,13 +71,10 @@ const { scrollTo } = useScrollTo()
   margin-bottom: var(--spacing-4);
 }
 
-.brand__icon {
-  color: var(--color-accent);
-}
-
-.brand__name {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+.brand__logo-img {
+  max-width: 180px;
+  height: auto;
+  display: block;
 }
 
 .brand__desc {
