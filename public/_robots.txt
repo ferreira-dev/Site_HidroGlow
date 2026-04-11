@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap (será gerado pelo @nuxtjs/seo)
+# Sitemap: https://hydroglow.com.br/sitemap.xml
