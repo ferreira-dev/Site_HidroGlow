@@ -11,9 +11,7 @@
         <!-- Serviço 1 -->
         <Card class="service-card">
           <template #header>
-            <div class="service-icon-wrapper">
-              <i class="pi pi-shield service-icon"></i>
-            </div>
+            <img src="/img/gestao_guardioes.png" alt="Gestão de Guardiões" class="service-img" />
           </template>
           <template #title>Gestão de Guardiões</template>
           <template #content>
@@ -24,9 +22,7 @@
         <!-- Serviço 2 -->
         <Card class="service-card">
           <template #header>
-            <div class="service-icon-wrapper">
-              <i class="pi pi-wrench service-icon"></i>
-            </div>
+            <img src="/img/manutencao_piscina.png" alt="Manutenção de Piscinas" class="service-img" />
           </template>
           <template #title>Manutenção de Piscinas</template>
           <template #content>
@@ -37,9 +33,7 @@
         <!-- Serviço 3 -->
         <Card class="service-card">
           <template #header>
-            <div class="service-icon-wrapper">
-              <i class="pi pi-heart-fill service-icon"></i>
-            </div>
+            <img src="/img/treinamento_salvamento.png" alt="Treinamento e Consultoria" class="service-img" />
           </template>
           <template #title>Treinamento & Consultoria</template>
           <template #content>
@@ -97,20 +91,10 @@
   padding: var(--spacing-6) var(--spacing-6) 0;
 }
 
-.service-icon-wrapper {
-  background: var(--color-primary-50);
-  width: 70px;
-  height: 70px;
-  border-radius: var(--border-radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--spacing-2);
-}
-
-.service-icon {
-  font-size: 2rem;
-  color: var(--color-primary);
+.service-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 :deep(.p-card-title) {

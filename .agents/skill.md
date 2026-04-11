@@ -49,3 +49,17 @@ H1: Deve conter as palavras-chave "Guardião de Piscina" e a localização (ex: 
 Alt-Text: Todas as imagens devem ter descrição para acessibilidade e busca por imagem.
 
 Semantic HTML: Usar tags <header>, <section>, <footer> e <address>.
+
+🧩 Logic & Retrieval Rules:
+Placeholder Logic: Sempre que solicitado um mockup de imagem, utilize https://picsum.photos/seed/{slug}/width/height. Use o "seed" baseado no nome da seção para manter a imagem persistente entre reloads.
+
+Logo Mockup: Para logos de clientes em condomínios, use a Logo.dev ou substitua por ícones abstratos da Phosphor Icons com fundo circular (p-avatar do PrimeVue).
+
+Visual Consistency: Toda imagem retornada deve, preferencialmente, ter tons de Azul ou Ciano (conforme o círculo cromático definido anteriormente). Se a imagem for muito quente (vermelha/amarela), sugira um overlay de CSS para harmonizar com o site.
+
+📝 Comandos de Injeção:
+/mock-hero: Retorna uma URL do Unsplash com o termo pool-lifeguard,safety,professional.
+
+/mock-testimonials [count]: Gera X cards de depoimento usando UI Faces para as fotos e nomes fictícios.
+
+/get-icons [theme]: Retorna os nomes das classes PrimeIcons ou Phosphor para piscina, segurança, limpeza, contato.

@@ -45,8 +45,8 @@ const { scrollTo } = useScrollTo()
 
 <style scoped>
 .app-footer {
-  background-color: var(--color-primary-dark);
-  color: var(--color-text-lighter);
+  background-color: var(--color-white);
+  color: var(--color-text);
   padding-top: var(--spacing-16);
 }
 
@@ -80,12 +80,14 @@ const { scrollTo } = useScrollTo()
 .brand__desc {
   line-height: var(--line-height-relaxed);
   max-width: 400px;
+  color: var(--color-text-light);
 }
 
 .footer-title {
-  color: var(--color-white);
+  color: var(--color-primary-dark);
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-4);
+  font-weight: var(--font-weight-bold);
 }
 
 .footer-links ul {
@@ -95,7 +97,7 @@ const { scrollTo } = useScrollTo()
 }
 
 .footer-links a {
-  color: var(--color-text-lighter);
+  color: var(--color-text-light);
   transition: color var(--transition);
 }
 
@@ -115,6 +117,7 @@ const { scrollTo } = useScrollTo()
   align-items: center;
   gap: var(--spacing-3);
   margin: 0;
+  color: var(--color-text-light);
 }
 
 .footer-bottom {

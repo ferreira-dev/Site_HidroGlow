@@ -57,12 +57,15 @@ const { scrollTo } = useScrollTo()
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, var(--color-primary-900) 0%, rgba(10, 22, 41, 0.7) 60%, rgba(10, 22, 41, 0.4) 100%);
+  background: linear-gradient(to left, var(--color-primary-900) 0%, rgba(10, 22, 41, 0.7) 50%, rgba(10, 22, 41, 0.1) 100%);
 }
 
 .hero__container {
   position: relative;
   z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .hero__content {
@@ -141,7 +144,7 @@ const { scrollTo } = useScrollTo()
   }
   
   .hero__overlay {
-    background: linear-gradient(to bottom, rgba(10, 22, 41, 0.8) 0%, rgba(10, 22, 41, 0.9) 100%);
+    background: linear-gradient(to bottom, rgba(10, 22, 41, 0.4) 0%, rgba(10, 22, 41, 0.9) 100%);
   }
 }
 

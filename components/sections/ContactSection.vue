@@ -11,21 +11,21 @@
         
         <div class="contact-methods">
           <div class="method-card">
-            <div class="method-icon"><i class="pi pi-whatsapp"></i></div>
+            <img src="https://svgl.app/library/whatsapp.svg" class="method-logo-img" alt="WhatsApp" />
             <div>
               <strong>WhatsApp Business</strong>
               <p>(21) 99999-9999</p>
             </div>
           </div>
           <div class="method-card">
-            <div class="method-icon"><i class="pi pi-envelope"></i></div>
+            <img src="https://svgl.app/library/gmail.svg" class="method-logo-img" alt="E-mail" />
             <div>
               <strong>E-mail</strong>
               <p>comercial@hydroglow.com.br</p>
             </div>
           </div>
           <div class="method-card">
-            <div class="method-icon"><i class="pi pi-map-marker"></i></div>
+            <img src="https://svgl.app/library/google_maps.svg" class="method-logo-img" alt="Sede" />
             <div>
               <strong>Sede Operacional</strong>
               <p>Barra da Tijuca, Rio de Janeiro - RJ</p>
@@ -166,18 +166,10 @@ const submitForm = () => {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.method-icon {
+.method-logo-img {
   width: 50px;
   height: 50px;
-  border-radius: var(--border-radius-full);
-  background: var(--color-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.method-icon i {
-  font-size: 1.5rem;
+  object-fit: contain;
 }
 
 .method-card strong {

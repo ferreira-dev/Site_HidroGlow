@@ -5,11 +5,9 @@
         <div class="image-wrapper">
           <!-- Placeholder using a sophisticated CSS pattern instead of an image to avoid external dependencies, 
                but we can easily replace it with a real image later -->
-          <div class="about__pattern">
-            <div class="pattern-overlay">
-               <i class="pi pi-verified badge-verified"></i>
-               <h3>Empresa Certificada</h3>
-            </div>
+          <div class="img-overlay-container">
+            <img src="/img/equipe_certificada.png" alt="Empresa Certificada" class="about__img" />
+            <div class="blue-overlay"></div>
           </div>
           <div class="experience-badge">
             <span class="experience-badge__number">+10</span>
@@ -72,38 +70,28 @@ const { scrollTo } = useScrollTo()
   box-shadow: var(--shadow-xl);
 }
 
-.about__pattern {
+.img-overlay-container {
   width: 100%;
   aspect-ratio: 4/5;
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
 }
 
-/* Adds a subtle water/wave pattern effect */
-.about__pattern::before {
-  content: '';
+.about__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blue-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
-  background-size: 24px 24px;
-}
-
-.pattern-overlay {
-  text-align: center;
-  color: var(--color-white);
-  z-index: 1;
-}
-
-.badge-verified {
-  font-size: 4rem;
-  color: var(--color-accent);
-  margin-bottom: var(--spacing-4);
+  background: var(--color-primary);
+  opacity: 0.6;
+  mix-blend-mode: multiply;
 }
 
 .experience-badge {
