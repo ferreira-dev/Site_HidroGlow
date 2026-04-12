@@ -42,22 +42,22 @@
           <form @submit.prevent="submitForm" class="contact-form">
             <div class="p-field">
               <label for="name">Nome Completo</label>
-              <InputText id="name" v-model="form.name" placeholder="Ex: João da Silva" required class="w-full" />
+              <InputText id="name" name="name" v-model="form.name" placeholder="Ex: João da Silva" required class="w-full" />
             </div>
 
             <div class="p-field">
               <label for="condominio">Nome do Condomínio / Empresa</label>
-              <InputText id="condominio" v-model="form.condominio" placeholder="Ex: Condomínio Rio das Pedras" required class="w-full" />
+              <InputText id="condominio" name="condominio" v-model="form.condominio" placeholder="Ex: Condomínio Rio das Pedras" required class="w-full" />
             </div>
 
             <div class="p-field">
               <label for="phone">Telefone (WhatsApp)</label>
-              <InputMask id="phone" v-model="form.phone" mask="(99) 99999-9999" placeholder="(21) 90000-0000" required class="w-full" />
+              <InputMask id="phone" name="phone" v-model="form.phone" mask="(99) 99999-9999" placeholder="(21) 90000-0000" required class="w-full" />
             </div>
 
             <div class="p-field">
               <label for="message">Detalhes (Opcional)</label>
-              <Textarea id="message" v-model="form.message" rows="4" placeholder="Quantas piscinas? Qual a escala pretendida?" class="w-full"></Textarea>
+              <Textarea id="message" name="message" v-model="form.message" rows="4" placeholder="Quantas piscinas? Qual a escala pretendida?" class="w-full"></Textarea>
             </div>
 
             <Button type="submit" :label="formStatus === 'loading' ? 'Enviando...' : 'Enviar Solicitação'" :icon="formStatus === 'loading' ? 'pi pi-spin pi-spinner' : 'pi pi-send'" class="btn-submit p-button-warning w-full" :disabled="formStatus === 'loading'" />
@@ -65,6 +65,12 @@
             <transition name="p-message">
               <Message v-if="formStatus === 'success'" severity="success" :closable="false" class="mt-4">
                 Solicitação enviada! Entraremos em contato em breve.
+              </Message>
+            </transition>
+            
+            <transition name="p-message">
+              <Message v-if="formStatus === 'error'" severity="error" :closable="false" class="mt-4">
+                Erro ao enviar a mensagem. Tente novamente mais tarde.
               </Message>
             </transition>
           </form>
@@ -85,19 +91,42 @@ const form = ref({
   message: ''
 })
 
-const formStatus = ref<'idle' | 'loading' | 'success'>('idle')
+const formStatus = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
 
-const submitForm = () => {
+const submitForm = async () => {
   formStatus.value = 'loading'
-  // Simula um envio assíncrono para o backend
-  setTimeout(() => {
-    formStatus.value = 'success'
-    form.value = { name: '', condominio: '', phone: '', message: '' }
-    
+  
+  try {
+    const response = await fetch('https://formspree.io/f/mykbrqzk', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form.value)
+    })
+
+    console.log("resposta:", response)
+
+    if (response.ok) {
+      formStatus.value = 'success'
+      form.value = { name: '', condominio: '', phone: '', message: '' }
+      
+      setTimeout(() => {
+        formStatus.value = 'idle'
+      }, 5000)
+    } else {
+      formStatus.value = 'error'
+      setTimeout(() => {
+        formStatus.value = 'idle'
+      }, 5000)
+    }
+  } catch (error) {
+    formStatus.value = 'error'
     setTimeout(() => {
       formStatus.value = 'idle'
     }, 5000)
-  }, 1500)
+  }
 }
 </script>
 
