@@ -11,7 +11,7 @@
         
         <div class="contact-methods">
           <a href="https://wa.me/5521990689196" target="_blank" rel="noopener noreferrer" class="method-card" style="text-decoration: none; color: inherit;">
-            <i class="pi pi-whatsapp" style="font-size: 3rem; color: #25D366; width: 50px; text-align: center;"></i>
+            <img src="https://api.iconify.design/logos:whatsapp-icon.svg" class="method-logo-img" alt="WhatsApp" />
             <div>
               <strong>WhatsApp Business</strong>
               <p>(21) 99068-9196</p>
@@ -21,14 +21,7 @@
             <img src="https://svgl.app/library/gmail.svg" class="method-logo-img" alt="E-mail" />
             <div>
               <strong>E-mail</strong>
-              <p>comercial@hydroglow.com.br</p>
-            </div>
-          </div>
-          <div class="method-card">
-            <img src="https://svgl.app/library/google_maps.svg" class="method-logo-img" alt="Sede" />
-            <div>
-              <strong>Sede Operacional</strong>
-              <p>Barra da Tijuca, Rio de Janeiro - RJ</p>
+              <p>hydroglow01@gmail.com</p>
             </div>
           </div>
         </div>
