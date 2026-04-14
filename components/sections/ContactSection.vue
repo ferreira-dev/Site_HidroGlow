@@ -10,13 +10,13 @@
         </p>
         
         <div class="contact-methods">
-          <div class="method-card">
-            <img src="https://svgl.app/library/whatsapp.svg" class="method-logo-img" alt="WhatsApp" />
+          <a href="https://wa.me/5521990689196" target="_blank" rel="noopener noreferrer" class="method-card" style="text-decoration: none; color: inherit;">
+            <i class="pi pi-whatsapp" style="font-size: 3rem; color: #25D366; width: 50px; text-align: center;"></i>
             <div>
               <strong>WhatsApp Business</strong>
-              <p>(21) 99999-9999</p>
+              <p>(21) 99068-9196</p>
             </div>
-          </div>
+          </a>
           <div class="method-card">
             <img src="https://svgl.app/library/gmail.svg" class="method-logo-img" alt="E-mail" />
             <div>

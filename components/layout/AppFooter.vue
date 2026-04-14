@@ -24,7 +24,7 @@
         <h4 class="footer-title">Contatos</h4>
         <address>
           <p><i class="pi pi-map-marker"></i> Rio de Janeiro, RJ</p>
-          <p><i class="pi pi-whatsapp"></i> (21) 99999-9999</p>
+          <p><i class="pi pi-whatsapp"></i> (21) 99068-9196</p>
           <p><i class="pi pi-envelope"></i> contato@hydroglow.com.br</p>
         </address>
       </div>
