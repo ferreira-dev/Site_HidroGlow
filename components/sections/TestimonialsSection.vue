@@ -16,7 +16,7 @@
             <p class="testimonial-content">"{{ slotProps.data.content }}"</p>
             <div class="testimonial-author">
               <div class="author-avatar">
-                <i class="pi pi-user"></i>
+                <img :src="slotProps.data.avatar" :alt="slotProps.data.name" class="avatar-img" />
               </div>
               <div class="author-info">
                 <strong>{{ slotProps.data.name }}</strong>
@@ -32,14 +32,21 @@
         <div class="marquee-container">
           <div class="marquee-track">
             <div v-for="client in clients" :key="client.id" class="marquee-item">
-              <div class="marquee-image-wrapper">
+              <div class="marquee-image-wrapper" @click="openModal(client)" title="Ver foto ampliada">
                 <img :src="client.image" :alt="client.name" class="marquee-image" />
+                <div class="zoom-overlay"><i class="pi pi-search-plus"></i></div>
               </div>
               <span class="marquee-name">{{ client.name }}</span>
             </div>
           </div>
         </div>
       </div>
+
+      <Dialog v-model:visible="displayModal" :modal="true" :header="selectedClient?.name" :dismissableMask="true" :style="{ width: '90vw', maxWidth: '900px' }">
+        <div class="modal-image-container" v-if="selectedClient">
+          <img :src="selectedClient.image" :alt="selectedClient.name" class="expanded-image" />
+        </div>
+      </Dialog>
     </div>
   </section>
 </template>
@@ -84,27 +91,32 @@ const testimonials = ref([
     id: 1,
     content: "Antes da HydroGlow, a gestão dos guardiões era uma dor de cabeça constante. Faltas, processos trabalhistas... Hoje a responsabilidade é deles e o serviço é impecável. Nunca ficamos na mão.",
     name: "Carlos Eduardo",
-    role: "Síndico (Cond. Barra Classic)"
+    role: "Síndico (Condomínio Nova Barra)",
+    avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
   },
   {
     id: 2,
-    content: "Tivemos uma fiscalização surpresa do CBMERJ e graças à documentação e ao treinamento da equipe da HydroGlow no local, fomos elogiados. Profissionalismo que vale cada centavo.",
-    name: "Mariana Silva",
-    role: "Gestora Operacional (Hotel Leblon)"
+    content: "A qualidade da água também melhorou absurdamente desde que assumiram. O guardião não só fiscaliza a segurança, mas garante o protocolo rigoroso de PH. Recomendo fortemente.",
+    name: "Roberto Nunes",
+    role: "Gestor (Residencial Parque dos Sonhos)",
+    avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
   },
   {
     id: 3,
-    content: "A qualidade da água também melhorou absurdamente desde que assumiram. O guardião não só fiscaliza a segurança, mas garante o protocolo rigoroso de PH. Recomendo fortemente.",
-    name: "Roberto Nunes",
-    role: "Síndico Profissional"
-  },
-  {
-    id: 4,
-    content: "Atendimento 100%. A substituição cobrindo feriados e imprevistos funciona de verdade. Trouxeram muita paz para nossa gestão.",
+    content: "Atendimento 100%. A substituição cobrindo feriados e imprevistos funciona de verdade. Trouxeram muita paz para nossa gestão do Condomínio.",
     name: "Fernanda Costa",
-    role: "Diretora de Clube"
+    role: "Diretora Operacional (Condomínio Rio Jazz)",
+    avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
   }
 ])
+
+const displayModal = ref(false)
+const selectedClient = ref<any>(null)
+
+const openModal = (client: any) => {
+  selectedClient.value = client
+  displayModal.value = true
+}
 </script>
 
 <style scoped>
@@ -169,16 +181,19 @@ const testimonials = ref([
 .author-avatar {
   width: 50px;
   height: 50px;
-  background-color: var(--color-primary-50);
+  background-color: var(--color-white);
   border-radius: var(--border-radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
+  overflow: hidden;
 }
 
-.author-avatar i {
-  font-size: 1.5rem;
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .author-info {
@@ -282,6 +297,37 @@ const testimonials = ref([
   aspect-ratio: 1 / 1;
   overflow: hidden;
   background-color: var(--color-background-alt);
+  position: relative;
+  cursor: pointer;
+}
+
+.zoom-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.zoom-overlay i {
+  color: var(--color-white);
+  font-size: 2.5rem;
+  transform: scale(0.5);
+  transition: transform 0.3s ease;
+}
+
+.marquee-image-wrapper:hover .zoom-overlay {
+  opacity: 1;
+}
+
+.marquee-image-wrapper:hover .zoom-overlay i {
+  transform: scale(1);
 }
 
 .marquee-image {
@@ -297,5 +343,15 @@ const testimonials = ref([
   color: var(--color-primary-dark);
   padding: var(--spacing-4) var(--spacing-5);
   text-align: left;
+}
+
+.expanded-image {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--border-radius-lg);
+  display: block;
+  margin: 0 auto;
 }
 </style>

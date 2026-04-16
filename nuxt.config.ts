@@ -63,6 +63,9 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'pt-BR' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+      ]
     },
   },
 })
