@@ -21,7 +21,7 @@
             <img src="https://svgl.app/library/gmail.svg" class="method-logo-img" alt="E-mail" />
             <div>
               <strong>E-mail</strong>
-              <p>hydroglow01@gmail.com</p>
+              <p>contato@hydroglow.com.br</p>
             </div>
           </div>
         </div>

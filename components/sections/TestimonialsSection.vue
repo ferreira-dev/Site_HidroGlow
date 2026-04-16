@@ -27,11 +27,18 @@
         </template>
       </Carousel>
 
-      <div class="logos-grid">
-        <div class="logo-item">Condomínio RioSul</div>
-        <div class="logo-item">Clube Náutico</div>
-        <div class="logo-item">Resort Barra</div>
-        <div class="logo-item">Hotel Copacabana</div>
+      <div class="clients-marquee-section">
+        <h3 class="clients-title">Nossos Clientes</h3>
+        <div class="marquee-container">
+          <div class="marquee-track">
+            <div v-for="client in clients" :key="client.id" class="marquee-item">
+              <div class="marquee-image-wrapper">
+                <img :src="client.image" :alt="client.name" class="marquee-image" />
+              </div>
+              <span class="marquee-name">{{ client.name }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -39,6 +46,25 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+
+import imgNovaBarra from '~/assets/images/clientes/nova_barra.jpg'
+import imgParqueSonhos from '~/assets/images/clientes/parque-dos-sonhos.jpg'
+import imgRioJazz from '~/assets/images/clientes/rio-jazz.jpg'
+import imgVilleBlanche from '~/assets/images/clientes/ville-blanche.png'
+
+const baseClients = [
+  { name: 'Nova Barra', image: imgNovaBarra },
+  { name: 'Parque dos Sonhos', image: imgParqueSonhos },
+  { name: 'Rio Jazz', image: imgRioJazz },
+  { name: 'Ville Blanche', image: imgVilleBlanche }
+]
+
+const clients = ref([
+  ...baseClients.map((c, i) => ({ ...c, id: `a-${i}` })),
+  ...baseClients.map((c, i) => ({ ...c, id: `b-${i}` })),
+  ...baseClients.map((c, i) => ({ ...c, id: `c-${i}` })),
+  ...baseClients.map((c, i) => ({ ...c, id: `d-${i}` }))
+])
 
 const responsiveOptions = ref([
   {
@@ -174,21 +200,102 @@ const testimonials = ref([
   background-color: var(--color-accent) !important;
 }
 
-.logos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--spacing-6);
-  margin-top: var(--spacing-12);
+.clients-marquee-section {
+  margin-top: var(--spacing-16);
   border-top: 1px solid var(--color-border-light);
   padding-top: var(--spacing-10);
-  opacity: 0.6;
 }
 
-.logo-item {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-xl);
+.clients-title {
+  text-align: center;
+  font-size: var(--font-size-lg);
   color: var(--color-text-light);
-  padding: var(--spacing-2) var(--spacing-6);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: var(--spacing-4) 0;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-container::before,
+.marquee-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
+}
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+.marquee-item {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  margin-right: var(--spacing-8);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.marquee-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.marquee-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+}
+
+.marquee-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.marquee-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  padding: var(--spacing-4) var(--spacing-5);
+  text-align: left;
 }
 </style>
