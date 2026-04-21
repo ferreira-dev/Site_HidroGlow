@@ -1,0 +1,6 @@
+subir o servidor local:
+- abre o terminal
+- entra na pasta do projeto
+- digita o comando: npm run dev
+- abre o navegador e digita: http://localhost:3000
+- pra subir o servidor local

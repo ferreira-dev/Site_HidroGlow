@@ -17,7 +17,7 @@
           <div class="stat divider"></div>
           <div class="stat">
             <span class="stat__number">0</span>
-            <span class="stat__label">Dores de Cabeça com Fiscalização</span>
+            <span class="stat__label">Dores de Cabeça </span>
           </div>
         </div>
       </div>

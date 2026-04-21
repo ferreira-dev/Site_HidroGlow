@@ -13,7 +13,7 @@
           Segurança aquática exigida por lei. Equipe altamente treinada e certificada para condomínios, clubes e academias. Protegemos o que mais importa.
         </p>
         <div class="hero__actions">
-          <Button label="Solicitar Orçamento Urgente" icon="pi pi-shield" size="large" class="p-button-warning btn-cta" @click="scrollTo('contato')" />
+          <Button label="Solicitar Orçamento" icon="pi pi-shield" size="large" class="p-button-warning btn-cta" @click="scrollTo('contato')" />
           <Button label="Conheça os Serviços" icon="pi pi-arrow-down" size="large" class="btn-outline" @click="scrollTo('servicos')" />
         </div>
       </div>

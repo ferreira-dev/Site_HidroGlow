@@ -29,22 +29,27 @@
 
       <div class="clients-marquee-section">
         <h3 class="clients-title">Nossos Clientes</h3>
-        <div class="marquee-container">
-          <div class="marquee-track">
-            <div v-for="client in clients" :key="client.id" class="marquee-item">
-              <div class="marquee-image-wrapper" @click="openModal(client)" title="Ver foto ampliada">
-                <img :src="client.image" :alt="client.name" class="marquee-image" />
+        <Carousel :value="clients" :numVisible="4" :numScroll="1" :circular="true" :responsiveOptions="clientsResponsiveOptions" class="clients-carousel" :autoplayInterval="3000">
+          <template #item="slotProps">
+            <div class="marquee-item">
+              <div class="marquee-image-wrapper" @click="openModal(slotProps.data)" title="Ver foto ampliada">
+                <img :src="slotProps.data.image" :alt="slotProps.data.name" class="marquee-image" />
                 <div class="zoom-overlay"><i class="pi pi-search-plus"></i></div>
               </div>
-              <span class="marquee-name">{{ client.name }}</span>
+              <span class="marquee-name">{{ slotProps.data.name }}</span>
             </div>
-          </div>
-        </div>
+          </template>
+        </Carousel>
       </div>
 
       <Dialog v-model:visible="displayModal" :modal="true" :header="selectedClient?.name" :dismissableMask="true" :style="{ width: '90vw', maxWidth: '900px' }">
         <div class="modal-image-container" v-if="selectedClient">
-          <img :src="selectedClient.image" :alt="selectedClient.name" class="expanded-image" />
+          <Carousel v-if="selectedClient.gallery && selectedClient.gallery.length > 1" :value="selectedClient.gallery" :numVisible="1" :numScroll="1" :circular="true" class="modal-carousel">
+            <template #item="slotProps">
+              <img :src="slotProps.data" :alt="selectedClient.name" class="expanded-image" />
+            </template>
+          </Carousel>
+          <img v-else :src="selectedClient.image" :alt="selectedClient.name" class="expanded-image" />
         </div>
       </Dialog>
     </div>
@@ -58,12 +63,13 @@ import imgNovaBarra from '~/assets/images/clientes/nova_barra.jpg'
 import imgParqueSonhos from '~/assets/images/clientes/parque-dos-sonhos.jpg'
 import imgRioJazz from '~/assets/images/clientes/rio-jazz.jpg'
 import imgVilleBlanche from '~/assets/images/clientes/ville-blanche.png'
+import imgVilleBlanche2 from '~/assets/images/clientes/ville-blanche-2.jpg'
 
 const baseClients = [
   { name: 'Nova Barra', image: imgNovaBarra },
   { name: 'Parque dos Sonhos', image: imgParqueSonhos },
   { name: 'Rio Jazz', image: imgRioJazz },
-  { name: 'Ville Blanche', image: imgVilleBlanche }
+  { name: 'Ville Blanche', image: imgVilleBlanche, gallery: [imgVilleBlanche, imgVilleBlanche2] }
 ]
 
 const clients = ref([
@@ -81,6 +87,24 @@ const responsiveOptions = ref([
   },
   {
     breakpoint: '768px',
+    numVisible: 1,
+    numScroll: 1
+  }
+])
+
+const clientsResponsiveOptions = ref([
+  {
+    breakpoint: '1200px',
+    numVisible: 3,
+    numScroll: 1
+  },
+  {
+    breakpoint: '992px',
+    numVisible: 2,
+    numScroll: 1
+  },
+  {
+    breakpoint: '576px',
     numVisible: 1,
     numScroll: 1
   }
@@ -106,6 +130,13 @@ const testimonials = ref([
     content: "Atendimento 100%. A substituição cobrindo feriados e imprevistos funciona de verdade. Trouxeram muita paz para nossa gestão do Condomínio.",
     name: "Fernanda Costa",
     role: "Diretora Operacional (Condomínio Rio Jazz)",
+    avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
+  },
+  {
+    id: 4,
+    content: "Desde que contratamos a HydroGlow, a gestão da piscina mudou completamente. A água está sempre cristalina, os processos são bem controlados e a equipe demonstra muito profissionalismo no dia a dia. Hoje temos mais tranquilidade e segurança, sabendo que tudo está sendo cuidado com rigor. Recomendo sem hesitar.",
+    name: "Debora Lima",
+    role: "Síndica (Condomínio Ville Blanche)",
     avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
   }
 ])
@@ -231,60 +262,21 @@ const openModal = (client: any) => {
   letter-spacing: 1px;
 }
 
-.marquee-container {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+.clients-carousel {
   padding: var(--spacing-4) 0;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.marquee-container::before,
-.marquee-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 10%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-.marquee-container::before {
-  left: 0;
-  background: linear-gradient(to right, var(--color-background) 0%, transparent 100%);
-}
-.marquee-container::after {
-  right: 0;
-  background: linear-gradient(to left, var(--color-background) 0%, transparent 100%);
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: scroll-marquee 25s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll-marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-25%); }
 }
 
 .marquee-item {
   display: flex;
   flex-direction: column;
-  width: 280px;
   background-color: var(--color-white);
   border: 1px solid var(--color-border-light);
   border-radius: var(--border-radius-xl);
   overflow: hidden;
-  margin-right: var(--spacing-8);
+  margin: 0 var(--spacing-3);
   box-shadow: var(--shadow-sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
 .marquee-item:hover {

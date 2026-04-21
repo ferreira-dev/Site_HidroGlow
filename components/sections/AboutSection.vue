@@ -10,7 +10,7 @@
             <div class="blue-overlay"></div>
           </div>
           <div class="experience-badge">
-            <span class="experience-badge__number">+10</span>
+            <span class="experience-badge__number">+7</span>
             <span class="experience-badge__text">Anos de<br>Experiência</span>
           </div>
         </div>
