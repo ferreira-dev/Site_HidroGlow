@@ -17,7 +17,7 @@
       </div>
       <div class="about__text-col">
         <span class="badge badge--pill">Nossa História</span>
-        <h2 class="about__title">Autoridade e Especialização em Segurança Aquática</h2>
+        <h2 class="about__title">Autoridade e Especialização em Segurança Aquática e Tratamento de Água</h2>
         <p class="about__desc">
           A <strong>HydroGlow</strong> nasceu com a missão de transformar a experiência em áreas de lazer aquático, unindo tranquilidade jurídica aos gestores e proteção máxima aos banhistas. 
         </p>

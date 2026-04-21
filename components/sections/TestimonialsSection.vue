@@ -60,16 +60,22 @@
 import { ref } from 'vue'
 
 import imgNovaBarra from '~/assets/images/clientes/nova_barra.jpg'
+import imgNovaBarra2 from '~/assets/images/clientes/nova-barra-2.jpg'
 import imgParqueSonhos from '~/assets/images/clientes/parque-dos-sonhos.jpg'
 import imgRioJazz from '~/assets/images/clientes/rio-jazz.jpg'
+import imgRioJazz2 from '~/assets/images/clientes/rio-jazz-2.jpg'
+import imgRioJazz3 from '~/assets/images/clientes/rio-jazz-3.jpg'
 import imgVilleBlanche from '~/assets/images/clientes/ville-blanche.png'
 import imgVilleBlanche2 from '~/assets/images/clientes/ville-blanche-2.jpg'
+import imgBaiaco1 from '~/assets/images/clientes/baiaco-1.jpg'
+import imgBaiaco2 from '~/assets/images/clientes/baiaco-2.jpg'
 
 const baseClients = [
-  { name: 'Nova Barra', image: imgNovaBarra },
+  { name: 'Nova Barra', image: imgNovaBarra, gallery: [imgNovaBarra, imgNovaBarra2] },
   { name: 'Parque dos Sonhos', image: imgParqueSonhos },
-  { name: 'Rio Jazz', image: imgRioJazz },
-  { name: 'Ville Blanche', image: imgVilleBlanche, gallery: [imgVilleBlanche, imgVilleBlanche2] }
+  { name: 'Rio Jazz', image: imgRioJazz, gallery: [imgRioJazz, imgRioJazz2, imgRioJazz3] },
+  { name: 'Ville Blanche', image: imgVilleBlanche, gallery: [imgVilleBlanche, imgVilleBlanche2] },
+  { name: 'Sítio do Baiaco', image: imgBaiaco1, gallery: [imgBaiaco1, imgBaiaco2] }
 ]
 
 const clients = ref([
@@ -120,16 +126,16 @@ const testimonials = ref([
   },
   {
     id: 2,
-    content: "A qualidade da água também melhorou absurdamente desde que assumiram. O guardião não só fiscaliza a segurança, mas garante o protocolo rigoroso de PH. Recomendo fortemente.",
+    content: "A qualidade da água também melhorou absurdamente desde que assumiram. O guardião não só fiscaliza a segurança, mas garante o protocolo rigoroso de Cloro e PH. Recomendo fortemente.",
     name: "Roberto Nunes",
     role: "Gestor (Residencial Parque dos Sonhos)",
     avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
   },
   {
     id: 3,
-    content: "Atendimento 100%. A substituição cobrindo feriados e imprevistos funciona de verdade. Trouxeram muita paz para nossa gestão do Condomínio.",
+    content: "Atendimento 100%. A substituição cobrindo folgas, feriados e imprevistos funciona de verdade. Trouxeram muita paz para nossa gestão do Condomínio.",
     name: "Fernanda Costa",
-    role: "Diretora Operacional (Condomínio Rio Jazz)",
+    role: "Preposta (Condomínio Rio Jazz)",
     avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
   },
   {
@@ -137,6 +143,13 @@ const testimonials = ref([
     content: "Desde que contratamos a HydroGlow, a gestão da piscina mudou completamente. A água está sempre cristalina, os processos são bem controlados e a equipe demonstra muito profissionalismo no dia a dia. Hoje temos mais tranquilidade e segurança, sabendo que tudo está sendo cuidado com rigor. Recomendo sem hesitar.",
     name: "Debora Lima",
     role: "Síndica (Condomínio Ville Blanche)",
+    avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
+  },
+  {
+    id: 5,
+    content: "Sempre que temos problemas com a água eles nos salvam, conseguem transformar um pântano verde em uma água cristalina de um dia pro outro, parece mágica. Não sei o que seria do nosso sitio sem a HidroGlow.",
+    name: "Baiaco",
+    role: "Sitio do Baiaco",
     avatar: "https://api.iconify.design/ph:user-circle-fill.svg?color=%2394a3b8"
   }
 ])

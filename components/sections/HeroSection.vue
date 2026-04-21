@@ -7,6 +7,7 @@
     
     <div class="container hero__container">
       <div class="hero__content">
+        <div class="hero__logo">HydroGlow</div>
         <span class="badge">Proteção & Conformidade</span>
         <h1 class="hero__title">Guardião de Piscina no <span class="highlight">Rio de Janeiro</span></h1>
         <p class="hero__subtitle">
@@ -86,6 +87,27 @@ const { scrollTo } = useScrollTo()
   margin-bottom: var(--spacing-4);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
+}
+
+.hero__logo {
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  font-weight: 900;
+  color: var(--color-white);
+  letter-spacing: -2px;
+  margin-bottom: var(--spacing-8);
+  position: relative;
+  line-height: 1;
+}
+
+.hero__logo::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 80px;
+  height: 6px;
+  background-color: var(--color-accent);
+  border-radius: 4px;
 }
 
 .hero__title {

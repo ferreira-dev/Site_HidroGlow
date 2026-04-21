@@ -5,6 +5,8 @@
     <ServicesSection />
     <AboutSection />
     <TestimonialsSection />
+    <ResidentialServicesSection />
+    <BeforeAfterSection />
     <ContactSection />
   </div>
 </template>
@@ -13,6 +15,8 @@
 import HeroSection from '~/components/sections/HeroSection.vue'
 import PainPointSection from '~/components/sections/PainPointSection.vue'
 import ServicesSection from '~/components/sections/ServicesSection.vue'
+import ResidentialServicesSection from '~/components/sections/ResidentialServicesSection.vue'
+import BeforeAfterSection from '~/components/sections/BeforeAfterSection.vue'
 import AboutSection from '~/components/sections/AboutSection.vue'
 import TestimonialsSection from '~/components/sections/TestimonialsSection.vue'
 import ContactSection from '~/components/sections/ContactSection.vue'
