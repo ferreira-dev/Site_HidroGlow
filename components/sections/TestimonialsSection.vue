@@ -71,10 +71,10 @@ import imgBaiaco1 from '~/assets/images/clientes/baiaco-1.jpg'
 import imgBaiaco2 from '~/assets/images/clientes/baiaco-2.jpg'
 
 const baseClients = [
-  { name: 'Nova Barra', image: imgNovaBarra, gallery: [imgNovaBarra, imgNovaBarra2] },
-  { name: 'Parque dos Sonhos', image: imgParqueSonhos },
   { name: 'Rio Jazz', image: imgRioJazz, gallery: [imgRioJazz, imgRioJazz2, imgRioJazz3] },
   { name: 'Ville Blanche', image: imgVilleBlanche, gallery: [imgVilleBlanche, imgVilleBlanche2] },
+  { name: 'Nova Barra', image: imgNovaBarra, gallery: [imgNovaBarra, imgNovaBarra2] },
+  { name: 'Parque dos Sonhos', image: imgParqueSonhos },
   { name: 'Sítio do Baiaco', image: imgBaiaco1, gallery: [imgBaiaco1, imgBaiaco2] }
 ]
 
