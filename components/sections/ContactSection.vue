@@ -24,6 +24,13 @@
               <p>contato@hydroglow.com.br</p>
             </div>
           </div>
+          <a href="https://www.instagram.com/hydroglow___?igsh=ejQ4dDdsdjFvbW9r" target="_blank" rel="noopener noreferrer" class="method-card" style="text-decoration: none; color: inherit;">
+            <img src="https://api.iconify.design/skill-icons:instagram.svg" class="method-logo-img" alt="Instagram" />
+            <div>
+              <strong>Instagram</strong>
+              <p>@hydroglow___</p>
+            </div>
+          </a>
         </div>
       </div>
 
